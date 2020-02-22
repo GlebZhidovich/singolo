@@ -25,6 +25,7 @@ a {
     width: 1020px;
     margin: 0 auto;
 }
+
 /*header*/
 
 .main-header {
@@ -104,7 +105,6 @@ a {
 .slider__wrap {
     display: flex;
 }
-
 
 .slider__control {
     position: relative;
@@ -221,9 +221,6 @@ a {
     font-weight: 400;
     word-spacing: 2px
 }
-
-
-
 
 .services__separator {
     height: 6px;
