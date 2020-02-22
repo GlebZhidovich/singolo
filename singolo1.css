@@ -82,6 +82,10 @@ a {
     letter-spacing: 0;
 }
 
+.main-header__link:hover {
+    text-decoration: underline;
+}
+
 .main-header__link_selected {
     color: #f06c64;
 }
@@ -112,6 +116,11 @@ a {
 .slider__control_right{
     position: absolute;
     top: calc(50% - 17px);
+}
+
+.slider__control_left:hover,
+.slider__control_right:hover{
+    cursor: pointer;
 }
 
 .slider__control_left {
