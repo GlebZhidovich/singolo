@@ -3,7 +3,6 @@
 }
 
 body {
-    width: 1020px;
     font-family: "Lato", "Arial", sans-serif;
     font-size: 12px;
     font-weight: 400;
@@ -32,6 +31,7 @@ a {
 /*portfolio*/
 
 .portfolio {
+    color: #767e9e;
     background-color: #2d303a;
 }
 
@@ -43,7 +43,6 @@ a {
     font-size: 30px;
     font-weight: 900;
     line-height: 24px;
-    color: #767e9e;
     padding-bottom: 30px;
 }
 
@@ -52,7 +51,6 @@ a {
     font-size: 18px;
     font-weight: 300;
     line-height: 16px;
-    color: #767e9e;
 }
 
 .portfolio__nav {
@@ -163,4 +161,107 @@ a {
 .portfolio-about-us__separator {
     height: 6px;
     background-color: #323746;
+}
+
+/*about-us*/
+
+.about-us {
+    color: #666d89;
+    background-color: #f2f2f2;
+}
+
+.about-us__wrap {
+    padding: 64px 40px 67px;
+}
+
+.about-us__title {
+    padding-bottom: 23px;
+    font-size: 30px;
+    line-height: 28px;
+    font-weight: 900;
+}
+
+.about-us__text {
+    padding-bottom: 45px;
+    font-size: 18px;
+    line-height: 30px;
+    color: #767e9e;
+    font-weight: 300;
+}
+
+.about-us__cards {
+    display: flex;
+    justify-content: space-between;
+}
+
+.about-us__card {
+    width: 300px;
+}
+
+.about-us__card__photo {
+    margin-bottom: 14px;
+}
+
+.about-us__card__title {
+    margin-bottom: 10px;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 900;
+}
+
+.about-us__card__text {
+    margin-bottom: 23px;
+    font-size: 12px;
+    line-height: 22px;
+    color: #767e9e;
+    font-weight: 400;
+}
+
+.about-us__card__social-media {
+    display: flex;
+}
+
+.about-us__card__social-media-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+    border-radius: 50%;
+    border: 1px solid #666d89;
+    cursor: pointer;
+}
+
+.about-us__card__social-media-item:hover {
+    transform: scale(1.2);
+}
+
+.facebook {
+    background-image: url("assets/img/facebook.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.google {
+    background-image: url("assets/img/google+.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.twitter {
+    background-image: url("assets/img/twitter.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.linked-in {
+    background-image: url("assets/img/linkedin.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.about-us__separator {
+    height: 6px;
+    background-color: #ffffff;
 }
