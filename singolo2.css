@@ -222,14 +222,13 @@ a {
 }
 
 .about-us__card__social-media-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 32px;
     height: 32px;
     margin-right: 8px;
     border-radius: 50%;
     border: 1px solid #666d89;
+    background-repeat: no-repeat;
+    background-position: center;
     cursor: pointer;
 }
 
@@ -239,26 +238,18 @@ a {
 
 .facebook {
     background-image: url("assets/img/facebook.svg");
-    background-repeat: no-repeat;
-    background-position: center;
 }
 
 .google {
     background-image: url("assets/img/google+.svg");
-    background-repeat: no-repeat;
-    background-position: center;
 }
 
 .twitter {
     background-image: url("assets/img/twitter.svg");
-    background-repeat: no-repeat;
-    background-position: center;
 }
 
 .linked-in {
     background-image: url("assets/img/linkedin.svg");
-    background-repeat: no-repeat;
-    background-position: center;
 }
 
 .about-us__separator {

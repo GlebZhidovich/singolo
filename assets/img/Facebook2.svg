@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 14" width="8" height="14">
+	<defs>
+		<image width="8" height="14" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAOBAMAAADgeEClAAAAAXNSR0IB2cksfwAAACdQTFRFAAAAZW2JZW2JZW2JZW2JZW2JZW2JZW2JZW2JZW2JZW2JZW2JZW2Jgnur/QAAAA10Uk5TADLI/xTucatwkDClV/dDvG4AAAAqSURBVHicY2BgVDZmYHA1BhLJ5h0MDJOtGBhWbbZZxWAMBBACzAVL4CIA6UwN3vRJoZMAAAAASUVORK5CYII="/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<g id="Footer">
+		<g id="Social Media">
+			<use id="Facebook" href="#img1" x="0" y="0" />
+		</g>
+	</g>
+</svg>
