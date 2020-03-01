@@ -3,6 +3,7 @@
 }
 
 body {
+    margin: 0;
     font-family: "Lato", "Arial", sans-serif;
     font-size: 12px;
     font-weight: 400;
@@ -146,7 +147,7 @@ a {
 }
 
 .services__wrap {
-    padding: 60px 40px;
+    padding: 60px 40px 58px;
 }
 
 .services__title {
@@ -233,7 +234,7 @@ a {
 }
 
 .portfolio__wrap {
-    padding: 66px 40px 47px;
+    padding: 66px 40px 46px;
 }
 
 .portfolio__title {
@@ -379,7 +380,7 @@ a {
 }
 
 .about-us__text {
-    padding-bottom: 45px;
+    padding-bottom: 43px;
     font-size: 18px;
     line-height: 30px;
     color: #767e9e;
@@ -434,19 +435,19 @@ a {
 }
 
 .facebook {
-    background-image: url("assets/img/facebook.svg");
+    background-image: url("assets/img/Facebook2.svg");
 }
 
 .google {
-    background-image: url("assets/img/google+.svg");
+    background-image: url("assets/img/Google2.svg");
 }
 
 .twitter {
-    background-image: url("assets/img/twitter.svg");
+    background-image: url("assets/img/Twitter2.svg");
 }
 
 .linked-in {
-    background-image: url("assets/img/linkedin.svg");
+    background-image: url("assets/img/LinkedIn2.svg");
 }
 
 .about-us__separator {
@@ -500,7 +501,7 @@ a {
 }
 
 .contacts__info__text {
-    padding-bottom: 24px;
+    padding-bottom: 22px;
 }
 
 .contacts__info__list {
@@ -604,8 +605,7 @@ a {
 }
 
 .footer__text {
-    display: inline-block;
-    padding-bottom: 4px;
+    padding-left: 2px;
     font-size: 12px;
     line-height: 14px;
     color: #666d89;
