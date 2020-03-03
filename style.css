@@ -164,6 +164,7 @@ a {
     color: #767e9e;
     font-weight: 300;
     word-spacing: 1px;
+    text-align: justify;
 }
 
 .services__info-list {
@@ -218,7 +219,7 @@ a {
     line-height: 22px;
     color: #767e9e;
     font-weight: 400;
-    word-spacing: 2px
+    text-align: justify;
 }
 
 .services__separator {
@@ -479,7 +480,7 @@ a {
     font-size: 18px;
     line-height: 30px;
     font-weight: 300;
-    text-align: left;
+    text-align: justify;
 }
 
 .contacts__info__title {
@@ -502,6 +503,7 @@ a {
 
 .contacts__info__text {
     padding-bottom: 22px;
+    text-align: justify;
 }
 
 .contacts__info__list {
