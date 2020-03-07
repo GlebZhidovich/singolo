@@ -386,6 +386,7 @@ a {
     line-height: 30px;
     color: #767e9e;
     font-weight: 300;
+    text-align: justify;
 }
 
 .about-us__cards {
@@ -414,6 +415,7 @@ a {
     line-height: 22px;
     color: #767e9e;
     font-weight: 400;
+    text-align: justify;
 }
 
 .about-us__card__social-media {
