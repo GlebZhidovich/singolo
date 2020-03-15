@@ -32,6 +32,59 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }();
 
+    !function slider() {
+            const rightArrow = document.querySelector('.slider__control_right');
+            const leftArrow = document.querySelector('.slider__control_left');
+            const setOfItems = document.querySelectorAll('.slider__item');
+            let curItem = 0;
+            let isEnableBut = true;
+
+            function setCurItem(n) {
+                curItem = (n + setOfItems.length) % setOfItems.length;
+            }
+
+            function setNextItem(n) {
+                hideItem('slider__item_to-right');
+                setCurItem(n + 1);
+                showItem('slider__item_from-left');
+            }
+
+            function setPrevItem(n) {
+                hideItem('slider__item_to-left');
+                setCurItem(n - 1);
+                showItem('slider__item_from-right');
+            }
+
+            function hideItem(direction) {
+                isEnableBut = false;
+                setOfItems[curItem].classList.add(direction);
+                setOfItems[curItem].addEventListener('animationend', function (e) {
+                    this.classList.remove('slider__item-active', direction);
+                })
+            }
+
+            function showItem(direction) {
+                setOfItems[curItem].classList.add('slider__item-next', direction);
+                setOfItems[curItem].addEventListener('animationend', function (e) {
+                    this.classList.remove('slider__item-next', direction);
+                    this.classList.add('slider__item-active');
+                    isEnableBut = true;
+                })
+            }
+
+            rightArrow.addEventListener('click', function (e) {
+                if (isEnableBut) {
+                    setNextItem(curItem);
+                }
+            });
+
+            leftArrow.addEventListener('click', function (e) {
+                if (isEnableBut) {
+                    setPrevItem(curItem);
+                }
+            })
+    }();
+
 });
 
 
