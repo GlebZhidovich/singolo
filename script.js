@@ -172,16 +172,54 @@ document.addEventListener("DOMContentLoaded", function() {
             galleryImgSelected.classList.toggle('portfolio__gallery-img_selected');
         })
     }();
+
+    !function formValidation() {
+        const contForm = document.forms.contacts;
+        const submitBtn = document.querySelector('.contacts__btn');
+        const modal = document.querySelector('.modal');
+        const modalContent = document.querySelector('.modal__content');
+        const modalBtn = document.querySelector('.modal__btn');
+        const contFormItems = [...contForm];
+        contForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+        });
+        function addContent (val, name) {
+                const p = document.createElement('p');
+                p.classList.add('modal__text');
+                if (val === '')  {
+                    const text = document.createTextNode(name === 'subject' ? 'Без темы' : 'Без опивания');
+                    p.appendChild(text);
+                }
+                else  p.textContent = val;
+                modalContent.appendChild(p);
+        }
+        let isEnable = true;
+        submitBtn.addEventListener('click', function (e) {
+            if (isEnable) {
+                isEnable = false;
+                for (let i = 0; i < contFormItems.length; i++) {
+                    const {name, value} = contFormItems[i];
+                    if (name === 'name' || name === 'email') {
+                        isEnable = true;
+                        if (value === '') return;
+                    }
+                    if (name === 'subject' || name === 'describe') {
+                        addContent(value, name);
+                    }
+                }
+                modal.style.display = 'flex';
+            }
+        });
+        modalBtn.addEventListener('click', function (e) {
+            modalContent.innerHTML = '';
+            const p = document.createElement('p');
+            p.classList.add('modal__text');
+            p.textContent = 'Письмо отправлено';
+            modalContent.appendChild(p);
+            modal.style.display = 'none';
+            isEnable = true;
+        })
+    }();
 });
 
-
-
-// const header = document.querySelector('.main-header');
-// const services = document.querySelector('.services');
-// const portfolio = document.querySelector('.portfolio');
-// const aboutUs = document.querySelector('.about-us');
-// const contacts = document.querySelector('.contacts');
-//
-//
-// const {height: headerHeight} = header.getBoundingClientRect();
 

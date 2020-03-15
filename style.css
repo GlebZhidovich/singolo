@@ -3,6 +3,7 @@
 }
 
 body {
+    min-width: 1020px;
     margin: 0;
     font-family: "Lato", "Arial", sans-serif;
     font-size: 12px;
@@ -748,4 +749,36 @@ a {
 
 .footer__linkedin {
     background-image: url("assets/img/LinkedIn2.svg");
+}
+
+.modal {
+    position: fixed;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 191, 255, 0.5);
+    z-index: 2;
+}
+
+.modal__wrap {
+    width: 250px;
+    padding: 10px;
+    border: 5px solid #2d2d2d;
+    border-radius: 10px;
+    background-color: #d6564f;
+}
+
+.modal__text {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.modal__btn {
+    border: 2px solid #2d2d2d;
+    border-radius: 3px;
+    background-color: #d6564f;
 }

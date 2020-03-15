@@ -227,15 +227,14 @@
                 Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum. Duis mollis, non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.
             </p>
             <div class="contacts__box">
-                <form action="example/handler.php" class="contacts__form">
-                    <input type="text" class="contacts__input" placeholder="Name (Required)" required>
-                    <input type="email" class="contacts__input" placeholder="Email (Required)" required>
-                    <input type="text" class="contacts__input" placeholder="Subject">
-                    <textarea class="contacts__textarea" placeholder="Describe your project in detail..."></textarea>
+                <form name="contacts" class="contacts__form">
+                    <input name="name" type="text" class="contacts__input" placeholder="Name (Required)" required>
+                    <input name="email" type="email" class="contacts__input" placeholder="Email (Required)" required>
+                    <input name="subject" type="text" class="contacts__input" placeholder="Subject">
+                    <textarea name="describe" class="contacts__textarea" placeholder="Describe your project in detail..."></textarea>
                     <div class="contacts__btn-wrap">
                         <button class="contacts__btn">Send</button>
                     </div>
-
                 </form>
                 <div class="contacts__info">
                     <h3 class="contacts__info__title">Contact Information</h3>
@@ -265,6 +264,14 @@
         </div>
     </div>
 </footer>
+<div class="modal">
+    <div class="modal__wrap">
+        <div class="modal__content">
+            <p class="modal__text">Письмо отправлено</p>
+        </div>
+        <button class="modal__btn">OK</button>
+    </div>
+</div>
 <script src="script.js" defer></script>
 </body>
 </html>
