@@ -372,14 +372,25 @@ a {
 
 .portfolio__gallery {
     display: flex;
+    min-height: 621px;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
+    align-content: flex-start;
 }
 
 .portfolio__gallery-img {
     width: 220px;
     height: 187px;
     margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+.portfolio__gallery-img_selected {
+    border: 5px solid #F06C64;
+}
+
+.portfolio__gallery-img:nth-child(4n) {
+    margin-right: 0;
 }
 
 .portfolio__gallery-img:nth-child(n + 13) {

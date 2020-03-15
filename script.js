@@ -129,6 +129,49 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }();
+
+    !function portfolio() {
+        const portfolioNav = document.querySelector('.portfolio__nav');
+        let selected = document.querySelector('.portfolio__nav-btn_selected');
+        const gallery = document.querySelector('.portfolio__gallery');
+        const galleryImgs = document.querySelectorAll('.portfolio__gallery-img');
+        let galleryImgSelected = null;
+        const galleryImgsArr = [...galleryImgs];
+        const actions = {
+            all() {
+                return galleryImgsArr;
+            },
+            web() {
+                return galleryImgsArr.slice(0, 9);
+            },
+            graphic() {
+                return galleryImgsArr.slice(0, 7);
+            },
+            artwork() {
+                return galleryImgsArr.slice(0, 5);
+            }
+        };
+        portfolioNav.addEventListener('click', function (e) {
+            const select = e.target.dataset.nav;
+            if (select) {
+                if (select === selected) return;
+                selected.classList.toggle('portfolio__nav-btn_selected');
+                e.target.classList.toggle('portfolio__nav-btn_selected');
+                selected = e.target;
+                gallery.innerHTML = '';
+                const imgs = actions[select]();
+                imgs.forEach(img => gallery.append(img));
+            }
+        });
+        gallery.addEventListener('click', function (e) {
+            if (e.target === this) return;
+            if (galleryImgSelected !== null) {
+                galleryImgSelected.classList.toggle('portfolio__gallery-img_selected');
+            }
+            galleryImgSelected = e.target;
+            galleryImgSelected.classList.toggle('portfolio__gallery-img_selected');
+        })
+    }();
 });
 
 
