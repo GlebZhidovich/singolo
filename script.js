@@ -85,6 +85,50 @@ document.addEventListener("DOMContentLoaded", function() {
             })
     }();
 
+    !function phoneOffOn() {
+        const phones = document.getElementById('phones');
+        const phonesImg = document.querySelector('.slider__img-phones');
+        const options = new Set();
+        phones.addEventListener('click', function (e) {
+            const actions = {
+                default() {
+                    phonesImg.src = 'assets/img/iPhones.png';
+                },
+                right() {
+                    phonesImg.src = 'assets/img/iPhones-right-off.png';
+                },
+                left() {
+                    phonesImg.src = 'assets/img/iPhones-left-off.png';
+                },
+                both() {
+                    phonesImg.src = 'assets/img/iPhones-off.png';
+                },
+            };
+            const btn = e.target.dataset.phone;
+            if (btn) {
+                if (options.size === 0) {
+                    options.add(btn);
+                    actions[btn]();
+                    return;
+                }
+                if (options.size === 1) {
+                    if (options.has(btn)) {
+                        actions.default();
+                        options.delete(btn);
+                        return;
+                    }
+                    actions.both();
+                    options.add(btn);
+                    return;
+                }
+                if (options.size === 2) {
+                    if (btn === 'right') actions.left();
+                    if (btn === 'left') actions.right();
+                    options.delete(btn);
+                }
+            }
+        });
+    }();
 });
 
 

@@ -148,10 +148,27 @@ a {
     animation: 0.5s ease-in-out;
 }
 
-.slider__img {
+.slider__img-btn_left,
+.slider__img-btn_right {
+    position: absolute;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.slider__img-btn_left {
+    top: 62px;
+    left: 11px;
+    width: 194px;
+    height: 390px;
 
 }
 
+.slider__img-btn_right {
+    top: 132px;
+    right: 88px;
+    width: 390px;
+    height: 194px;
+}
 
 .slider__item-active,
 .slider__item-next {
