@@ -3,7 +3,6 @@
 }
 
 body {
-    min-width: 1020px;
     margin: 0;
     font-family: "Lato", "Arial", sans-serif;
     font-size: 12px;
@@ -26,7 +25,7 @@ a {
 }
 
 .container {
-    width: 1020px;
+    max-width: 1020px;
     margin: 0 auto;
 }
 
@@ -110,32 +109,12 @@ a {
 }
 
 .slider__wrap {
-    display: flex;
-}
-
-.slider__control {
     position: relative;
-    width: 112px;
-    text-align: center;
-}
-
-.slider__control_left,
-.slider__control_right{
-    position: absolute;
-    top: calc(50% - 17px);
-}
-
-.slider__control_left:hover,
-.slider__control_right:hover{
-    cursor: pointer;
-}
-
-.slider__control_left {
-    left: calc(50% - 13px);
 }
 
 .slider__content {
-    padding: 53px 0 58px;
+    width: 100%;
+    position: relative;
 }
 
 .slider__wrapper {
@@ -145,8 +124,41 @@ a {
 
 .slider__item {
     display: none;
-    position: relative;
+    width: 100%;
     animation: 0.5s ease-in-out;
+    text-align: center;
+    padding: 53px 0 58px;
+    transition: width 1s ease;
+}
+
+.slider__item:last-of-type {
+    background-color: #648BF0;
+}
+
+.slider__control {
+    position: absolute;
+    top: calc(50% - 18px);
+    border: none;
+    background-color: transparent;
+    transform-origin: center;
+}
+
+.slider__control_left:hover,
+.slider__control_right:hover{
+    cursor: pointer;
+}
+
+.slider__control_right{
+    right: calc(3% + 4px);
+}
+
+.slider__control_left {
+    left: calc(3% + 4px);
+}
+
+.slider__img-phones {
+    width: 100%;
+    max-width: 797px;
 }
 
 .slider__img-btn_left,
@@ -157,18 +169,17 @@ a {
 }
 
 .slider__img-btn_left {
-    top: 62px;
-    left: 11px;
-    width: 194px;
-    height: 390px;
-
+    top: 19%;
+    left: 12%;
+    width: 19%;
+    height: 65%;
 }
 
 .slider__img-btn_right {
-    top: 132px;
-    right: 88px;
-    width: 390px;
-    height: 194px;
+    top: 31%;
+    right: 19%;
+    width: 39%;
+    height: 33%;
 }
 
 .slider__item-active,
@@ -222,6 +233,10 @@ a {
     background-color: #ea676b;
 }
 
+@media (max-width: 760px) {
+    .slider__item {
+    }
+}
 /*services*/
 
 .services {
@@ -612,10 +627,6 @@ a {
     text-align: justify;
 }
 
-.contacts__info__list {
-
-}
-
 .contacts__info__items {
     position: relative;
     padding-left: 23px;
@@ -775,6 +786,7 @@ a {
 .modal__text {
     font-size: 14px;
     margin-bottom: 10px;
+    word-wrap: break-word;
 }
 
 .modal__btn {

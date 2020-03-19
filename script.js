@@ -217,6 +217,7 @@ document.addEventListener("DOMContentLoaded", function() {
             p.textContent = 'Письмо отправлено';
             modalContent.appendChild(p);
             modal.style.display = 'none';
+            contForm.reset();
             isEnable = true;
         })
     }();
