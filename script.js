@@ -1,35 +1,61 @@
 document.addEventListener("DOMContentLoaded", function() {
 
     !function navigation() {
+        let selected = document.querySelector('.main-header__link_selected');
+        document.addEventListener('scroll', findActiveLayer);
+        function findActiveLayer (e) {
+            console.log(pageYOffset);
+        }
         const headerNavigation = document.querySelector('.main-header__items');
         headerNavigation.addEventListener('click', moveToSection);
-
+        let animationId = null;
+        const setOfSections = {
+            home: document.querySelector('.header'),
+            services: document.querySelector('.services'),
+            portfolio: document.querySelector('.portfolio'),
+            about: document.querySelector('.about-us'),
+            contact: document.querySelector('.contacts')
+        };
+        function animateScroll(size, speed) {
+            let newSize = Math.abs(size);
+            requestAnimationFrame(function animate(time) {
+                if (newSize - speed < 0) {
+                    speed = newSize;
+                }
+                newSize -= speed;
+                if (size > 0) {
+                    scrollBy(0 , speed);
+                } else {
+                    scrollBy(0 , -speed);
+                }
+                if (newSize > 0) {
+                    animationId = requestAnimationFrame(animate);
+                }
+                if (newSize <= 0) {
+                    cancelAnimationFrame(animationId);
+                    document.addEventListener('scroll', findActiveLayer);
+                }
+            });
+        }
         function moveToSection(event) {
             event.preventDefault();
-            const setOfSections = {
-                home: document.querySelector('.main-header'),
-                services: document.querySelector('.services'),
-                portfolio: document.querySelector('.portfolio'),
-                about: document.querySelector('.about-us'),
-                contact: document.querySelector('.contacts')
-            };
             const {height: headerHeight} = setOfSections['home'].getBoundingClientRect();
-            let selected = document.querySelector('.main-header__link_selected');
             return !function () {
                 const {textContent: nameOfSection} = event.target;
-                if (nameOfSection === selected.textContent) return;
                 if (nameOfSection in setOfSections) {
+                    cancelAnimationFrame(animationId);
+                    document.removeEventListener('scroll', findActiveLayer);
                     selected.classList.toggle('main-header__link_selected');
                     const {target: navElement} = event;
                     navElement.classList.toggle('main-header__link_selected');
                     selected = navElement;
                     const {y: sectionTop} = setOfSections[nameOfSection].getBoundingClientRect();
                     const sectionY = sectionTop - headerHeight;
-                    if (nameOfSection === 'home') scrollTo(0, 0);
-                    else scrollBy(0, sectionY);
+                    animateScroll(sectionY, 50);
                 }
-            }()
+            }();
         }
+
     }();
 
     !function slider() {

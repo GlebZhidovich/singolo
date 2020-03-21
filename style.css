@@ -30,10 +30,13 @@ a {
 }
 
 /*header*/
+.header {
+    height: 89px;
+}
 
 .main-header {
-    position: sticky;
-    top: 0;
+    position: fixed;
+    width: 100%;
     background-color: #2d303a;
     z-index: 1;
 }
