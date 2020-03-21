@@ -1,21 +1,66 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-    !function navigation() {
-        let selected = document.querySelector('.main-header__link_selected');
-        document.addEventListener('scroll', findActiveLayer);
-        function findActiveLayer (e) {
-            console.log(pageYOffset);
+    const setOfSections = {
+        home: document.querySelector('.header'),
+        slider: document.querySelector('.slider'),
+        services: document.querySelector('.services'),
+        portfolio: document.querySelector('.portfolio'),
+        about: document.querySelector('.about-us'),
+        contact: document.querySelector('.contacts')
+    };
+
+    const setOfButtons = {
+        home: document.querySelector('a[href="#"]'),
+        slider: document.querySelector('a[href="#"]'),
+        services: document.querySelector('a[href="#services"]'),
+        portfolio: document.querySelector('a[href="#portfolio"]'),
+        about: document.querySelector('a[href="#about"]'),
+        contact: document.querySelector('a[href="#contact"]')
+    };
+
+    const {height: headerHeight} = setOfSections['home'].getBoundingClientRect();
+
+    let selected = document.querySelector('.main-header__link_selected');
+
+    function changeClass(selected, selectedNext) {
+        selected.classList.toggle('main-header__link_selected');
+        selectedNext.classList.toggle('main-header__link_selected');
+    }
+
+    function changeSelectBut(button) {
+        if(selected === button) return;
+        changeClass(selected, button);
+        selected = button;
+    }
+
+    !function curLayer() {
+        for (let key in setOfSections) {
+            const {top, height} = setOfSections[key].getBoundingClientRect();
+            if (Math.abs(top) < height / 2 ) {
+                changeSelectBut(setOfButtons[key]);
+            }
         }
+    }();
+
+    !function navigation() {
         const headerNavigation = document.querySelector('.main-header__items');
         headerNavigation.addEventListener('click', moveToSection);
         let animationId = null;
-        const setOfSections = {
-            home: document.querySelector('.header'),
-            services: document.querySelector('.services'),
-            portfolio: document.querySelector('.portfolio'),
-            about: document.querySelector('.about-us'),
-            contact: document.querySelector('.contacts')
-        };
+        document.addEventListener('scroll', findActiveLayer);
+        let lastPos = pageYOffset;
+        function findActiveLayer () {
+            const curPos = pageYOffset;
+            for (let key in setOfSections) {
+                const {top, height} = setOfSections[key].getBoundingClientRect();
+                if ((Math.abs(top - headerHeight - height) < 100) && curPos - lastPos > 0) {
+                    changeSelectBut(setOfButtons[key]);
+                }
+                if ((Math.abs(top - headerHeight + height) < 100) && curPos - lastPos < 0) {
+                    changeSelectBut(setOfButtons[key]);
+                }
+            }
+            lastPos = curPos;
+        }
         function animateScroll(size, speed) {
             let newSize = Math.abs(size);
             requestAnimationFrame(function animate(time) {
@@ -39,15 +84,13 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         function moveToSection(event) {
             event.preventDefault();
-            const {height: headerHeight} = setOfSections['home'].getBoundingClientRect();
             return !function () {
                 const {textContent: nameOfSection} = event.target;
                 if (nameOfSection in setOfSections) {
                     cancelAnimationFrame(animationId);
                     document.removeEventListener('scroll', findActiveLayer);
-                    selected.classList.toggle('main-header__link_selected');
                     const {target: navElement} = event;
-                    navElement.classList.toggle('main-header__link_selected');
+                    changeClass(selected, navElement);
                     selected = navElement;
                     const {y: sectionTop} = setOfSections[nameOfSection].getBoundingClientRect();
                     const sectionY = sectionTop - headerHeight;
@@ -55,7 +98,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             }();
         }
-
     }();
 
     !function slider() {
