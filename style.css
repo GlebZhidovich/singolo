@@ -797,3 +797,26 @@ a {
     border-radius: 3px;
     background-color: #d6564f;
 }
+
+.layer-animation {
+    opacity: 0;
+    animation: layer 3s ease;
+}
+
+@keyframes layer {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.6;
+    }
+    75% {
+        opacity: 0.9;
+    }
+    100%{
+        opacity: 1;
+    }
+}

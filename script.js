@@ -42,6 +42,14 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }();
 
+    function animateLayer(layer) {
+        layer.classList.add('layer-animation');
+        layer.addEventListener('animationend', function removeClass() {
+            this.classList.remove('layer-animation');
+            layer.removeEventListener('animationend', removeClass);
+        });
+    }
+
     !function navigation() {
         const headerNavigation = document.querySelector('.main-header__items');
         headerNavigation.addEventListener('click', moveToSection);
@@ -53,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function() {
             for (let key in setOfSections) {
                 const {top, height} = setOfSections[key].getBoundingClientRect();
                 if ((Math.abs(top - headerHeight - height) < 100) && curPos - lastPos > 0) {
+                    animateLayer(setOfSections[key]);
                     changeSelectBut(setOfButtons[key]);
                 }
                 if ((Math.abs(top - headerHeight + height) < 100) && curPos - lastPos < 0) {
