@@ -31,11 +31,11 @@ a {
 
 /*header*/
 .header {
-    height: 89px;
+    /*height: 89px;*/
 }
 
 .main-header {
-    position: fixed;
+    /*position: fixed;*/
     width: 100%;
     background-color: #2d303a;
     z-index: 1;
@@ -105,6 +105,11 @@ a {
     background-color: #323746;
 }
 
+@media (min-width: 768px) and (max-width: 1019px) {
+    .main-header__items {
+        padding-bottom: 7px;
+    }
+}
 /*slider*/
 
 .slider {
@@ -130,7 +135,7 @@ a {
     width: 100%;
     animation: 0.5s ease-in-out;
     text-align: center;
-    padding: 53px 0 58px;
+    padding: 53px 84px 58px;
     transition: width 1s ease;
 }
 
@@ -236,8 +241,22 @@ a {
     background-color: #ea676b;
 }
 
-@media (max-width: 760px) {
+
+@media (min-width: 768px) and (max-width: 1019px) {
     .slider__item {
+        padding: 41px 84px 40px;
+    }
+
+    .slider__control {
+        top: calc(50% - 12px);
+    }
+
+    .slider__control_right{
+        right: calc(3% - 2px);
+    }
+
+    .slider__control_left {
+        left: calc(3%);
     }
 }
 /*services*/
@@ -248,7 +267,7 @@ a {
 }
 
 .services__wrap {
-    padding: 60px 40px 58px;
+    padding: 60px 40px 24px;
 }
 
 .services__title {
@@ -271,26 +290,20 @@ a {
 .services__info-list {
     display: flex;
     flex-wrap: wrap;
+    justify-content: flex-start;
     padding: 0;
-}
-
-.services__info-list:first-of-type {
-    padding-bottom: 32px;
 }
 
 .services__info-list__item {
     flex: 1 1;
     display: flex;
+    min-width: 300px;
+    max-width: 300px;
+    margin-right: 20px;
+    margin-bottom: 33px;
 }
-
-.services__info-list__item:first-child {
-    min-width: 320px;
-    padding-right: 20px;
-}
-
-.services__info-list__item:nth-child(2) {
-    min-width: 320px;
-    padding-right: 20px;
+.services__info-list__item:nth-child(3n) {
+    margin-right: 0;
 }
 
 .services__info-list__item-icon {
@@ -331,6 +344,33 @@ a {
     background-color: #ffffff;
 }
 
+@media (min-width: 768px) and (max-width: 1019px) {
+    .services__wrap {
+        padding: 41px 40px 15px 41px;
+    }
+
+    .services__subtitle {
+        margin-bottom: 38px;
+    }
+
+    .services__info-list__wrap {
+        display: flex;
+        justify-content: center;
+    }
+
+    .services__info-list {
+        max-width: 700px;
+    }
+
+    .services__wrap .services__info-list__item {
+        margin-right: 53px;
+        margin-bottom: 52px;
+    }
+
+    .services__info-list__item:nth-child(2n) {
+        margin-right: 0;
+    }
+}
 /*portfolio*/
 
 .portfolio {
@@ -481,6 +521,38 @@ a {
     background-color: #323746;
 }
 
+@media (min-width: 768px) and (max-width: 1019px) {
+    .portfolio__title {
+        padding-bottom: 23px;
+    }
+
+    .portfolio__text {
+        padding-right: 40px;
+        padding-bottom: 12px;
+        line-height: 30px
+    }
+
+    .portfolio__gallery {
+        max-width: 900px;
+    }
+
+    .portfolio__gallery-img {
+        width: 216px;
+        height: 184px;
+    }
+
+    .portfolio__gallery-img:nth-child(4n) {
+        margin-right: 20px;
+    }
+
+    .portfolio__gallery-img:nth-child(3n) {
+        margin-right: 0;
+    }
+
+    .portfolio__nav {
+        padding-bottom: 27px;
+    }
+}
 /*about-us*/
 
 .about-us {
@@ -580,6 +652,38 @@ a {
     background-color: #ffffff;
 }
 
+@media (min-width: 768px) and (max-width: 1019px) {
+    .about-us__wrap {
+        padding: 57px 40px 69px;
+    }
+
+    .about-us__cards {
+        padding-left: 2px;
+    }
+
+    .about-us__card {
+        width: 219px;
+    }
+
+    .about-us__card__photo {
+        width: 219px;
+        height: 219px;
+        margin-bottom: 10px;
+    }
+
+    .about-us__card__text {
+        max-height: 72px;
+        margin-bottom: 10px;
+    }
+
+    .about-us__text {
+        padding-bottom: 36px;
+    }
+
+    .about-us__card__title {
+        margin-bottom: 3px;
+    }
+}
 /*contacts*/
 
 
@@ -589,7 +693,7 @@ a {
 }
 
 .contacts__wrap {
-    padding: 67px 40px 12px;
+    padding: 67px 40px 57px;
 }
 
 .contacts__title {
@@ -600,7 +704,7 @@ a {
 }
 
 .contacts__text {
-    padding-bottom: 44px;
+    padding-bottom: 43px;
     font-size: 18px;
     line-height: 30px;
     font-weight: 300;
@@ -671,8 +775,7 @@ a {
 }
 
 .contacts__input,
-.contacts__textarea,
-.contacts__btn {
+.contacts__textarea {
     padding: 8px 14px;
     font-size: 12px;
     line-height: 22px;
@@ -680,6 +783,18 @@ a {
     border: none;
     border-radius: 5px;
     background-color: #d6564f;
+}
+
+.contacts__btn {
+    padding: 11px 49px;
+    color: #886A30;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+    border: none;
+    border-radius: 5px;
+    background-color: #FBC65F;
+    text-transform: uppercase;
 }
 
 .contacts__input {
@@ -692,12 +807,12 @@ a {
 }
 
 .contacts__textarea {
-    height: 202px;
+    height: 159px;
     resize: none;
 }
 
 .contacts__btn {
-    margin-top: 16px;
+    margin-top: 14px;
 }
 
 .contacts__btn:hover {
@@ -715,6 +830,58 @@ a {
     background-color: #ea676b;
 }
 
+@media (min-width: 768px) and (max-width: 1019px) {
+    .contacts__wrap {
+        padding: 60px 40px 38px;
+    }
+
+    .contacts__title {
+        padding-left: 2px;
+    }
+
+    .contacts__form {
+        flex: 2 2 60%;
+        display: flex;
+        flex-direction: column;
+        padding-right: 17px;
+    }
+
+    .contacts__text {
+        padding-bottom: 25px;
+        padding-left: 2px;
+    }
+
+    .contacts__input {
+        margin-bottom: 12px;
+    }
+
+    .contacts__btn {
+        margin-top: 17px;
+    }
+
+    .contacts__info {
+        padding-left: 11px;
+    }
+
+    .contacts__info__title {
+        padding-bottom: 3px;
+    }
+
+    .contacts__info__text {
+        padding-bottom: 12px;
+    }
+
+    .contacts__input {
+        padding: 8px 9px;
+    }
+
+    .contacts__textarea {
+        padding-top: 5px;
+        padding-left: 9px;
+    }
+}
+/*footer*/
+
 .footer {
     background-color: #2d303a;
 }
@@ -727,8 +894,8 @@ a {
 }
 
 .footer__text {
-    padding-left: 2px;
-    font-size: 12px;
+    font-weight: 900;
+    font-size: 13px;
     line-height: 14px;
     color: #666d89;
 }
@@ -799,24 +966,14 @@ a {
 }
 
 .layer-animation {
-    opacity: 0;
-    animation: layer 3s ease;
+    animation: show 1s ease-in-out;
 }
 
-@keyframes layer {
+@keyframes show {
     0% {
-        opacity: 0;
-    }
-    25% {
-        opacity: 0.3;
-    }
-    50% {
-        opacity: 0.6;
-    }
-    75% {
-        opacity: 0.9;
+        transform: translateY(+100%);
     }
     100%{
-        opacity: 1;
+        transform: translateY(0);
     }
 }

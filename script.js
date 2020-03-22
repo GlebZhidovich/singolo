@@ -41,13 +41,20 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
     }();
-
+    let isAnim = true;
     function animateLayer(layer) {
-        layer.classList.add('layer-animation');
-        layer.addEventListener('animationend', function removeClass() {
-            this.classList.remove('layer-animation');
-            layer.removeEventListener('animationend', removeClass);
-        });
+
+        if (isAnim) {
+            console.log('anim');
+            isAnim = false;
+            layer.classList.add('layer-animation');
+            layer.addEventListener('animationend', function removeClass() {
+                this.classList.remove('layer-animation');
+                layer.removeEventListener('animationend', removeClass);
+                isAnim = true;
+            });
+        }
+
     }
 
     !function navigation() {
@@ -58,14 +65,21 @@ document.addEventListener("DOMContentLoaded", function() {
         let lastPos = pageYOffset;
         function findActiveLayer () {
             const curPos = pageYOffset;
+            const minLengthToBlock = 100;
+            const minLenForAnim = 200;
+            const beginBlockPos = 0;
             for (let key in setOfSections) {
                 const {top, height} = setOfSections[key].getBoundingClientRect();
-                if ((Math.abs(top - headerHeight - height) < 100) && curPos - lastPos > 0) {
+                if (top - innerHeight < minLenForAnim && top - innerHeight > beginBlockPos && curPos - lastPos > beginBlockPos && isAnim) {
                     animateLayer(setOfSections[key]);
-                    changeSelectBut(setOfButtons[key]);
                 }
-                if ((Math.abs(top - headerHeight + height) < 100) && curPos - lastPos < 0) {
+                if ((top > beginBlockPos && top < minLengthToBlock) && curPos - lastPos > beginBlockPos) {
                     changeSelectBut(setOfButtons[key]);
+                    break;
+                }
+                if ((Math.abs(top - headerHeight + height) < minLengthToBlock) && curPos - lastPos < beginBlockPos) {
+                    changeSelectBut(setOfButtons[key]);
+                    break;
                 }
             }
             lastPos = curPos;
