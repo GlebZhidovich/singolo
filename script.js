@@ -43,9 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }();
     let isAnim = true;
     function animateLayer(layer) {
-
         if (isAnim) {
-            console.log('anim');
             isAnim = false;
             layer.classList.add('layer-animation');
             layer.addEventListener('animationend', function removeClass() {
@@ -63,21 +61,21 @@ document.addEventListener("DOMContentLoaded", function() {
         let animationId = null;
         document.addEventListener('scroll', findActiveLayer);
         let lastPos = pageYOffset;
-        function findActiveLayer () {
+        function findActiveLayer (e) {
             const curPos = pageYOffset;
-            const minLengthToBlock = 100;
+            const minLengthToBlock = 50;
             const minLenForAnim = 200;
             const beginBlockPos = 0;
             for (let key in setOfSections) {
-                const {top, height} = setOfSections[key].getBoundingClientRect();
-                if (top - innerHeight < minLenForAnim && top - innerHeight > beginBlockPos && curPos - lastPos > beginBlockPos && isAnim) {
-                    animateLayer(setOfSections[key]);
-                }
+                const {top, bottom, height} = setOfSections[key].getBoundingClientRect();
+                // if (top - innerHeight < minLenForAnim && top - innerHeight > beginBlockPos && curPos - lastPos > beginBlockPos && isAnim) {
+                //     animateLayer(setOfSections[key]);
+                // }
                 if ((top > beginBlockPos && top < minLengthToBlock) && curPos - lastPos > beginBlockPos) {
                     changeSelectBut(setOfButtons[key]);
                     break;
                 }
-                if ((Math.abs(top - headerHeight + height) < minLengthToBlock) && curPos - lastPos < beginBlockPos) {
+                if ((bottom > beginBlockPos && bottom < minLengthToBlock) && curPos - lastPos < beginBlockPos) {
                     changeSelectBut(setOfButtons[key]);
                     break;
                 }
