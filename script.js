@@ -1,5 +1,20 @@
 document.addEventListener("DOMContentLoaded", function() {
 
+    const main = {
+        'main-header': document.querySelector('.main-header'),
+        'main-header__wrap': document.querySelector('.main-header__wrap'),
+        'main-header__btn': document.querySelector('.main-header__btn'),
+        'main-header__items': document.querySelector('.main-header__items')
+    };
+
+    function switchBtn(obj) {
+        for (let key in obj) {
+            obj[key].classList.toggle(`${key}_mobile`);
+        }
+    }
+
+    let isOpen = false;
+
     const setOfSections = {
         home: document.querySelector('.header'),
         slider: document.querySelector('.slider'),
@@ -17,8 +32,6 @@ document.addEventListener("DOMContentLoaded", function() {
         about: document.querySelector('a[href="#about"]'),
         contact: document.querySelector('a[href="#contact"]')
     };
-
-    const {height: headerHeight} = setOfSections['home'].getBoundingClientRect();
 
     let selected = document.querySelector('.main-header__link_selected');
 
@@ -108,13 +121,19 @@ document.addEventListener("DOMContentLoaded", function() {
             return !function () {
                 const {textContent: nameOfSection} = event.target;
                 if (nameOfSection in setOfSections) {
-                    cancelAnimationFrame(animationId);
+                    // cancelAnimationFrame(animationId);
                     document.removeEventListener('scroll', findActiveLayer);
                     const {target: navElement} = event;
                     changeClass(selected, navElement);
                     selected = navElement;
                     const {y: sectionTop} = setOfSections[nameOfSection].getBoundingClientRect();
-                    const sectionY = sectionTop - headerHeight;
+                    const {height: headerHeight} = setOfSections['home'].getBoundingClientRect();
+                    const extraHeightToScroll = 3;
+                    const sectionY = sectionTop - headerHeight + extraHeightToScroll;
+                    if (isOpen) {
+                        isOpen = !isOpen;
+                        switchBtn(main);
+                    }
                     animateScroll(sectionY, 50);
                 }
             }();
@@ -310,6 +329,13 @@ document.addEventListener("DOMContentLoaded", function() {
             isEnable = true;
         })
     }();
+
+    !function burgerMenu() {
+        main['main-header__btn'].addEventListener('click', function () {
+            isOpen = !isOpen;
+            switchBtn(main);
+        });
+    }()
 });
 
 
